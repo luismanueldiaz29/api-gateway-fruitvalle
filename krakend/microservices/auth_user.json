@@ -1,0 +1,110 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/api/user",
+      "method": "GET",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "*"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "AUTH_HOST"
+          ],
+          "url_pattern": "/api/user"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/user",
+      "method": "POST",
+      "input_headers": [
+        "Authorization",
+        "Content-Type"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "AUTH_HOST"
+          ],
+          "url_pattern": "/api/user"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/user/username/{username}",
+      "method": "GET",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "*"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "AUTH_HOST"
+          ],
+          "url_pattern": "/api/user/username/{username}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/user/{id}",
+      "method": "GET",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "*"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "AUTH_HOST"
+          ],
+          "url_pattern": "/api/user/{id}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/user/{id}",
+      "method": "PUT",
+      "input_headers": [
+        "Authorization"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "AUTH_HOST"
+          ],
+          "url_pattern": "/api/user/{id}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/user/{id}",
+      "method": "DELETE",
+      "input_headers": [
+        "Authorization"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "AUTH_HOST"
+          ],
+          "url_pattern": "/api/user/{id}"
+        }
+      ]
+    }
+  ]
+}

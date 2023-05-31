@@ -1,0 +1,25 @@
+{{ $jwtConfig := .jwt }}
+{{ $endpoints := .endpoints }}
+
+{{ range $idx, $endpoint := $endpoints }}
+
+  {{ if $idx }},{{ end }}
+  {{ range $_, $backend := $endpoint.backend }}
+    {{ if hasKey $backend "host_env" }}
+      {{ $_ := set $backend "host" list }}
+      {{ range $_, $host_env := $backend.host_env }}
+        {{ $host := env $host_env }}
+        {{ $_ := set $backend "host" (append $backend.host $host) }}
+      {{ end }}
+      {{ $_ := unset $backend "host_env" }}
+    {{ end }}
+  {{ end }}
+
+  {{ if hasKey $endpoint "extra_config" }}
+    {{ merge $endpoint (dict "extra_config" $jwtConfig) | marshal }}
+  {{ else }}
+    {{ $authenticatedEndpoint := set $endpoint "extra_config" $jwtConfig }}
+    {{ marshal $authenticatedEndpoint }}
+  {{ end }}
+
+{{ end }}

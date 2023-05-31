@@ -1,0 +1,18 @@
+{
+    "endpoints": [
+      {
+        "endpoint": "/api/auth/login",
+        "output_encoding": "no-op",
+        "method": "POST",
+        "backend": [
+          {
+            "host_env": [
+              "AUTH_HOST"
+            ],
+            "url_pattern": "/api/auth/login"
+          }
+        ]
+      }
+    ]
+  }
+  

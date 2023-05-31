@@ -1,0 +1,161 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "cache_ttl": "3600s",
+    "name": "api gateway",
+    "timeout": "3s",
+    "extra_config": {
+    "security/cors": {
+      "allow_origins": [
+        "*"
+      ],
+      "allow_methods": [
+        "GET",
+        "POST",
+        "DELETE",
+        "PUT",
+        "PATCH",
+        "OPTIONS",
+        "HEAD"
+      ],
+      "expose_headers": [
+        "Content-Length",
+        "Content-Type"
+      ],
+      "allow_headers": [
+        "Authorization",
+        "Accept-Language",
+        "Content-Type",
+        "X-Api-Key"
+      ],
+      "debug": false
+    }
+}
+  ,
+    "endpoints": [
+
+
+
+
+  
+  
+    
+  
+
+  
+    
+    {"backend":[{"host":["http://localhost:3000"],"url_pattern":"/__health"}],"endpoint":"/","extra_config":null}
+  
+
+,
+
+
+
+
+  
+  
+    
+      
+      
+        
+        
+      
+      
+    
+  
+
+  
+    
+    {"backend":[{"host":["http://localhost:8098"],"url_pattern":"/api/auth/login"}],"endpoint":"/api/auth/login","extra_config":null,"method":"POST","output_encoding":"no-op"}
+  
+
+,
+        
+
+
+
+
+  
+  
+    
+      
+      
+        
+        
+      
+      
+    
+  
+
+  
+    
+    {"backend":[{"host":["http://localhost:8098"],"url_pattern":"/api/auth/refresh-token"}],"endpoint":"/api/auth/refresh-token","extra_config":{"auth/validator":{"alg":"RS256","disable_jwk_security":true,"jwk_url":"http://backend-authentication:5001/keys"},"validation/cel":[{"check_expr":"JWT.refreshToken == 'true'"}]},"input_headers":["Authorization"],"input_query_strings":["*"],"output_encoding":"no-op"}
+  
+
+,
+        
+
+
+
+
+  
+  
+    
+      
+      
+        
+        
+      
+      
+    
+  
+
+  
+    
+    {"backend":[{"host":["http://localhost:8098"],"url_pattern":"/api/user"}],"endpoint":"/api/user","extra_config":{"auth/validator":{"alg":"RS256","disable_jwk_security":true,"jwk_url":"http://backend-authentication:5001/keys"},"validation/cel":[{"check_expr":"JWT.refreshToken == 'false'"}]},"input_headers":["Authorization"],"input_query_strings":["*"],"method":"GET","output_encoding":"no-op"}
+  
+
+
+
+  ,
+  
+    
+      
+      
+        
+        
+      
+      
+    
+  
+
+  
+    
+    {"backend":[{"host":["http://localhost:8098"],"url_pattern":"/api/user"}],"endpoint":"/api/user","extra_config":{"auth/validator":{"alg":"RS256","disable_jwk_security":true,"jwk_url":"http://backend-authentication:5001/keys"},"validation/cel":[{"check_expr":"JWT.refreshToken == 'false'"}]},"input_headers":["Authorization"],"method":"POST","output_encoding":"no-op"}
+  
+
+,
+
+
+
+
+  
+  
+    
+      
+      
+        
+        
+      
+      
+    
+  
+
+  
+    
+    {"backend":[{"host":["http://hello-go:3002"],"url_pattern":"/"}],"endpoint":"/api/hello","extra_config":{"auth/validator":{"alg":"RS256","disable_jwk_security":true,"jwk_url":"http://backend-authentication:5001/keys"},"validation/cel":[{"check_expr":"JWT.refreshToken == 'false'"}]},"input_headers":["Authorization"],"input_query_strings":["*"],"method":"GET","output_encoding":"no-op"}
+  
+
+   
+    ]
+}

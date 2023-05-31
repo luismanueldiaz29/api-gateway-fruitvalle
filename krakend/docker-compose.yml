@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  api-gateway:
+    image: api-gateway:0.0.1
+    container_name: api-gateway
+    environment:
+      AUTH_HOST: ${AUTH_HOST}
+      KRAKEND_TIMEOUT: ${TIMEOUT}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ENVIRONMENT: prd
+    networks:
+      - parking
+    ports:
+      - ${GATEWAY_PORT}:3000
+
+networks:
+  parking:
+    external: true

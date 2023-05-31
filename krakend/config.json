@@ -1,0 +1,17 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "cache_ttl": "3600s",
+    "name": "api gateway",
+    "timeout": "3s",
+    "extra_config": {{ include "extra.json" }},
+    "endpoints": [
+        {{- /* Root endpoint */ -}}
+        {{ template "endpoint.prd.tmpl" ._root }},
+        
+        {{- /* Authentication Endpoints */ -}}
+        {{ template "endpoint.prd.tmpl" .auth_login }},
+        {{ template "endpoint.prd.tmpl" (merge .auth_renew ._refreshJwt) }},
+        {{ template "endpoint.prd.tmpl" (merge .auth_user ._jwt) }}
+    ]
+}

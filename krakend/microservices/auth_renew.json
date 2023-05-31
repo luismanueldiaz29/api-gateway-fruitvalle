@@ -1,0 +1,22 @@
+{
+    "endpoints": [
+      {
+        "endpoint": "/api/auth/refresh-token",
+        "output_encoding": "no-op",
+        "input_query_strings": [
+          "*"
+        ],
+        "input_headers": [
+          "Authorization"
+        ],
+        "backend": [
+          {
+            "host_env": [
+              "AUTH_HOST"
+            ],
+            "url_pattern": "/api/auth/refresh-token"
+          }
+        ]
+      }
+    ]
+}
