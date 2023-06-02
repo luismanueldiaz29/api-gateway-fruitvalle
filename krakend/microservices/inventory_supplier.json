@@ -1,0 +1,91 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "/api/supplier",
+      "method": "GET",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "*"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "INVENTORY_HOST"
+          ],
+          "url_pattern": "/api/supplier"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/supplier",
+      "method": "POST",
+      "input_headers": [
+        "Authorization",
+        "Content-Type"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "INVENTORY_HOST"
+          ],
+          "url_pattern": "/api/supplier"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/supplier/{id}",
+      "method": "GET",
+      "input_headers": [
+        "Authorization"
+      ],
+      "input_query_strings": [
+        "*"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "INVENTORY_HOST"
+          ],
+          "url_pattern": "/api/supplier/{id}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/supplier/{id}",
+      "method": "PUT",
+      "input_headers": [
+        "Authorization"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "INVENTORY_HOST"
+          ],
+          "url_pattern": "/api/supplier/{id}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/supplier/{id}",
+      "method": "DELETE",
+      "input_headers": [
+        "Authorization"
+      ],
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "host_env": [
+            "INVENTORY_HOST"
+          ],
+          "url_pattern": "/api/supplier/{id}"
+        }
+      ]
+    }
+  ]
+}

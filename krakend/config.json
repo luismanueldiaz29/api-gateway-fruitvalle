@@ -12,6 +12,9 @@
         {{- /* Authentication Endpoints */ -}}
         {{ template "endpoint.prd.tmpl" .auth_login }},
         {{ template "endpoint.prd.tmpl" (merge .auth_renew ._refreshJwt) }},
-        {{ template "endpoint.prd.tmpl" (merge .auth_user ._jwt) }}
+        {{ template "endpoint.prd.tmpl" (merge .auth_user ._jwt) }},
+
+        {{- /* Inventory Endpoints */ -}}
+        {{ template "endpoint.prd.tmpl" (merge .inventory_supplier ._jwt) }}
     ]
 }

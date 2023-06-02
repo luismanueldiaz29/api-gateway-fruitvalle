@@ -6,6 +6,7 @@ services:
     container_name: api-gateway
     environment:
       AUTH_HOST: ${AUTH_HOST}
+      INVENTORY_HOST: ${INVENTORY_HOST}
       KRAKEND_TIMEOUT: ${TIMEOUT}
     build:
       context: .
@@ -13,10 +14,10 @@ services:
       args:
         ENVIRONMENT: prd
     networks:
-      - parking
+      - fruitvalle
     ports:
       - ${GATEWAY_PORT}:3000
 
 networks:
-  parking:
+  fruitvalle:
     external: true
